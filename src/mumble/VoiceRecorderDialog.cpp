@@ -188,8 +188,8 @@ void VoiceRecorderDialog::on_qpbStart_clicked() {
 	AudioOutputPtr ao(g.ao);
 	if (!ao)
 		return;
-
-	g.sh->announceRecordingState(true);
+//prevent alerting others of recording
+//	g.sh->announceRecordingState(true);
 
 	// Create the recorder
 	VoiceRecorder::Config config;
@@ -272,7 +272,8 @@ void VoiceRecorderDialog::reset(bool resettimer) {
 		VoiceRecorderPtr recorder(g.sh->recorder);
 		if (recorder) {
 			g.sh->recorder.reset();
-			g.sh->announceRecordingState(false);
+			//just to be sure they know nothing
+			//g.sh->announceRecordingState(false);
 		}
 	}
 
