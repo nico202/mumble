@@ -209,7 +209,6 @@ SF_INFO VoiceRecorder::createSoundFileInfo() const {
 	SF_INFO sfinfo;
 	switch (m_config.recordingFormat) {
 		case VoiceRecorderFormat::WAV:
-		default:
 			sfinfo.frames = 0;
 			sfinfo.samplerate = m_config.sampleRate;
 			sfinfo.channels = 1;
@@ -239,6 +238,7 @@ SF_INFO VoiceRecorder::createSoundFileInfo() const {
 			qWarning() << "VoiceRecorder: recording started to" << m_config.fileName << "@" << m_config.sampleRate << "hz in AU format";
 			break;
 		case VoiceRecorderFormat::FLAC:
+		default: //default to flac (:
 			sfinfo.frames = 0;
 			sfinfo.samplerate = m_config.sampleRate;
 			sfinfo.channels = 1;
